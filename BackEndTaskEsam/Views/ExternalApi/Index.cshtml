@@ -1,0 +1,27 @@
+﻿@model BackEndTaskEsam.Models.External.Questions
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Get External API</h1>
+<br />
+<br />
+<div>
+    @foreach (var item in Model.items)
+    {
+    <div class="row">
+        <div class="col-md-1">
+            Id @item.question_id
+        </div>
+        <div class="col-md-1">
+            rate @item.score
+        </div>
+        <div class="col-md-11">
+            <h2>
+                @item.title
+            </h2>
+        </div>
+    </div>
+    }
+</div>
+

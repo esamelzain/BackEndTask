@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>DropDownList</h2>
+<br />
+<br />
+<br />
+<div>
+    @Html.DropDownList("Categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { @class = "form-control", @onchange = "onChange()" })
+    @Html.DropDownList("Books", new SelectList(ViewBag.Books, "Id", "Name"), new { @class = "form-control", @onchange = "onChange()" })
+
+</div>
+<script>
+    function onChange() {
+        $("#Books").html("");
+        var id = $("#Categories option:selected").val();
+        $.ajax({
+            url: "/DDList/JsonResult/"+id,
+            success: function (data) {
+                var jobject = JSON.parse(data);
+                for (var i = 0; i <= jobject.length; i++) {
+                    $("#Books").append('<option value="' + jobject[i].Id + '">' + jobject[i].Title + '</option>');
+                }
+            }
+        });
+    }
+</script>
