@@ -19,7 +19,7 @@ namespace BackEndTaskEsam.Controllers
             clientHandler.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
             using(var client=new HttpClient(clientHandler))
             {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
                 client.BaseAddress = new Uri("https://api.stackexchange.com");
                 var response = client.GetAsync("2.2/questions?page=1&pagesize=50&order=desc&sort=activity&site=stackoverflow");
                 var result = response.Result.Content.ReadAsStringAsync();
